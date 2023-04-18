@@ -4,7 +4,10 @@ set (CMAKE_CXX_STANDARD 20)
 include(FetchContent)
 
 # Source files
-add_executable(Threading main.cpp)
+add_executable(Threading
+    main.cpp
+    Benchmarking/Benchmark.cpp
+)
 
 # Include directories
 target_include_directories(Threading PUBLIC
