@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Threading Project",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Threading/Debug/Threading",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/Threading",
+            "environment": [],
+            "console": "internalConsole",
+            "preLaunchTask": "Debug"
+        },
+        {
+            "name": "Release Threading Project",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Threading/Release/Threading",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/Threading",
+            "environment": [],
+            "console": "internalConsole",
+            "preLaunchTask": "Release"
+        },
+    ]
+}
