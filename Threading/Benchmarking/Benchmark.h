@@ -16,4 +16,6 @@ public:
 private:
     std::chrono::high_resolution_clock::time_point m_StartTime;
     std::chrono::high_resolution_clock::time_point m_EndTime;
+
+    bool m_HasStopped{false};
 };

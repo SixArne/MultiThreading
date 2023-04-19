@@ -7,6 +7,8 @@ include(FetchContent)
 add_executable(Threading
     main.cpp
     Benchmarking/Benchmark.cpp
+    Exercises/CacheLines.cpp
+    Exercises/ThreadOverhead.cpp
 )
 
 # Include directories

@@ -10,7 +10,8 @@ Benchmark::Benchmark()
 
 Benchmark::~Benchmark()
 {
-    Stop();
+    if (!m_HasStopped)
+        Stop();
 }
 
 void Benchmark::Start()
@@ -20,25 +21,36 @@ void Benchmark::Start()
 
 void Benchmark::Stop()
 {
+    m_HasStopped = true;
     m_EndTime = std::chrono::high_resolution_clock::now();
 
-    std::cout << "Elapsed seconds: " << GetElapsedSeconds() << " seconds" << std::endl;
-    std::cout << "Elapsed milliseconds: " << GetElapsedMilliseconds() << " milliseconds" << std::endl;
-    std::cout << "Elapsed microseconds: " << GetElapsedMicroseconds() << " microseconds" << std::endl;
+    float precision = 4;
+
+    std::cout << std::fixed << std::setprecision(precision) << "Elapsed seconds: "
+              << GetElapsedSeconds()
+              << " seconds" << std::endl;
+
+    std::cout << std::fixed << std::setprecision(precision) << "Elapsed milliseconds: "
+              << GetElapsedMilliseconds()
+              << " milliseconds" << std::endl;
+
+    std::cout << std::fixed << std::setprecision(precision) << "Elapsed microseconds: "
+              << GetElapsedMicroseconds()
+              << " microseconds" << std::endl;
 }
 
 double Benchmark::GetElapsedSeconds() const
 {
-    return std::chrono::duration_cast<std::chrono::seconds>(m_EndTime - m_StartTime).count();
+    return std::chrono::duration<double>(m_EndTime - m_StartTime).count();
 }
 
 double Benchmark::GetElapsedMilliseconds() const
 {
-    return std::chrono::duration_cast<std::chrono::milliseconds>(m_EndTime - m_StartTime).count();
+    return std::chrono::duration<double, std::milli>(m_EndTime - m_StartTime).count();
 }
 
 double Benchmark::GetElapsedMicroseconds() const
 {
-    return std::chrono::duration_cast<std::chrono::microseconds>(m_EndTime - m_StartTime).count();
+    return std::chrono::duration<double, std::micro>(m_EndTime - m_StartTime).count();
 }
 
